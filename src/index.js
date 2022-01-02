@@ -22,7 +22,7 @@ for(let i = 0; span.length; i++){
         console.log(span[i].getAttribute1("href"));
         setDetails(span[i]);
     })
-}       
+}        
 }
 // function setDetails(span){
 //     console.log("span element", span);
