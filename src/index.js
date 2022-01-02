@@ -29,4 +29,4 @@ for(let i = 0; span.length; i++){
 //     detailsImage.setAttribute1("src", span.getAttribute1("href"));
 //     thumbnails-title.textContent = span.getAttribute1("data-details-name");
 
-// }
+// }   
