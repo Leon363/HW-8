@@ -20,22 +20,12 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    margin: 0;
     background-color: rgb(8, 144, 185);
-    margin: 0pt; 
-
-
+     
 
     /* align-items: center; */
 }
-header{
-    background-color: darkblue;
-    text-align: center;
-}
-footer{
-    background-color: darkblue;
-   
-}
-
 .thumbnails-list {
     display: flex;
     flex-direction: row;
@@ -46,9 +36,6 @@ footer{
     list-style: none;
     padding: 0;
     padding-top: 2.5vh;
-}
-.thumbnails-item+.thumbnails-item{
-    margin-top: 2vh;
 }
 .thumbnails-image {
     width: var(--thumbnails-image-width);
@@ -63,8 +50,9 @@ footer{
     font-family: airstream;
     font-style: italic;
 }
+
 .details-image {
-    width: 90vw;
+    width: 70vw;
     height: 60vw;
     border-radius: 25%;
 }
@@ -83,11 +71,13 @@ footer{
     width: var(--thumbnails-image-width);
     height: var(--thumbnails-title-height);
 }
+
 .thumbnails-item {
     margin-top: 2vh;
     margin-left: 2vw;
     border: 1px solid blue;
     max-width: var(--thumbnails-image-width);
+    min-height: calc(var(--thumbnails-image-height) + var(--thumbnails-title-height));
     /* min-width: calc(var(--thumbnails-image-height) + var(--thumbnails-title-height)); */
     border-radius: 25%;
     overflow: hidden;
@@ -100,13 +90,54 @@ footer{
     color: ghostwhite;
     font-size: 2rem;
     text-align: center;
-   text-transform: uppercase;
-   margin: 0;
-   font-family: lakeshor;
+    text-transform: uppercase;
+    margin: 0;
+    font-family: lakeshor;
 }
+
 body, html {
     height: 100%
 }
+
+header{
+    background-color: darkblue;
+    text-align: center;
+}
+
+footer{
+    background-color: darkblue;
+   
+}
+
+
+.hidden .thumbnails-list {
+    flex-direction: column;
+    max-height: 80vh
+    flex-wrap  nowrap;
+}
+
+.thumbnails-item+.thumbnails-item{
+    margin-top: 2vh;
+}
+
+
+.hide-button{
+    position: relative;
+    right: 10vw;
+    top: 2vw;
+}
+
+.hidden .details-container{
+    display: none;
+}
+
+
+.selected.thumbnails-item {
+    border-radius: 0;
+    border: 3px solid green;
+} 
+
+
 @media (min-width: 568px){
     :root{
         --thumbnails-image-width: 12vw;
@@ -121,39 +152,40 @@ body, html {
         max-height: 90vh;
         justify-content: flex-start;
         padding: 0;
+        margin: 0;
        
     }
     .thumbnails-title {
        
-        font-size: 10rem;
-        justify-content: space-around;
-        width: 150px;
-
+        font-size: calc(var(--thumbnails-title-height)*0.75);
         
     }
     .thumbnails-item {
         
         margin-left:0;
-        min-height: calc(var(--thumbnails-image-height));
+        /* min-height: calc(var(--thumbnails-image-height)); */
         overflow:hidden;
         margin-top: 0;
        
     }
     
+    .thumbnails-item+.thumbnails-item{
+        margin-top: 1vh;
+    }
+
     .details-image {
         width: 60vw;
         height: 43vw;
     }
     .details-title {
         left: -4vw;
-        bottom: 2vw
+        bottom: 3vw
         
     }
     .main-content {
         display: flex;
          justify-content: space-around; 
-        
-        
+                
     }
     .details-container {
         justify-content: center;
@@ -169,7 +201,7 @@ body, html {
         font-size: 1.5rem;
         
     }
-
+    }
     @media (min-with: 900px) { 
         
     
@@ -192,19 +224,9 @@ body, html {
         .thumbnails-title {
            
             font-size: 2rem;
-            justify-content: space-around;
-            width: 120px;
-    
                
         }
-        .thumbnails-item {
-            
-            margin-left:0;
-            min-height: calc(var(--thumbnails-image-height));
-            overflow:clihip;
-            margin-top: 0;
-           
-        }
+        
         
         .details-image {
             width: 60vw;
@@ -212,31 +234,15 @@ body, html {
         }
         .details-title {
             left: -4vw;
-            bottom: 2vw
+            bottom: 2vw;
+            font-size: 2rem;
               
         }
-        .main-content {
-            display: flex;
-             justify-content: space-around; 
-            
-            
-        }
-        .details-container {
-            justify-content: center;
-            
-        }
-        body {
-           
-            justify-content: space-between;
-            margin: 0;
-        }
+       
         .logo-title {
             margin: 0;
-            font-size: 1.5rem;
+            font-size: 2rem;
              
         }
-        .footer-title{
-            color: bisque;
-        }
+     
     }
-}
