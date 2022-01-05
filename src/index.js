@@ -1,29 +1,57 @@
 console.log("script launched");
 let detailsImage = document.querySelector(".details-image");
 let detailsTitle = document.querySelector(".details-title");
-let detailsName = document.querySelector(".details-name")
+let mainContentEl = document.querySelector(".main-content");
+let selectedItem ;
 let anchors = document.querySelectorAll(".thumbnails-anchor");
 for(let i = 0; anchors.length; i++){
     anchors[i].addEventListener("click", function(event){
         event.preventDefault();
-        console.log(anchors[i].getAttribute("href"));
+        showDetails();
+        // console.log(anchors[i].getAttribute("href"));
         setDetails(anchors[i]);
+        // hideDetails();
     })
 }
-function setDetails(anchor){
+function setDetails(anchor) {
     console.log("anchor element was pressed", anchor);
-    detailsImage.setAttribute("src", anchor.getAttribute("href"));
-    detailsTitle.textContent = anchor.getAttribute("data-details-title");
+    let hrefValue = anchor.getAttribute("href")
+    detailsImage.setAttribute("src", hrefValue );
+    anchor.parentElement.classList.add("selected");
+    if(selectedItem) {
+        selectedItem.classList.remove("selected")
+    }
+    selectedItem = anchor.parentElement;
+
+    //get element with class thumbnails-title inside the given anchor
+    let thumbnailsTitleSelector = `[href="${hrefValue}"] .thumbnails-title`; //слектор структуры "element element"
+    let thumbnailsTitleE1 = document.querySelector(thumbnailsTitleSelector);
+    //dog name exists inside thumbnailsTitleE1.textContent
+    detailsTitle.textContent = `${thumbnailsTitleE1.textContent}: ${anchor.getAttribute('data-details-title')} ` ;
+   
   
     
-for(let i = 0; span.length; i++){
-    span[i].addEventListener("click", function(event){
-        event.preventDefault();
-        console.log(span[i].getAttribute1("href"));
-        setDetails(span[i]);
-    })
-}        
+    // detailsTitle.textContent = anchor.querySelector(".thumbnails-title").textContent + ": " + anchor.getAttribute("data-details-title");    
 }
+
+
+
+function showDetails() {
+    mainContentEl.classList.remove('hidden');
+}
+
+function hideDetails() {
+    mainContentEl.classList.add('hidden')
+}
+
+// function hideDetails(){
+//     mainContentEl.classList.add('hidden')
+// }
+
+// function hideDetails() {
+//     mainContentEl.classList.add('hidden');
+// }
+
 // function setDetails(span){
 //     console.log("span element", span);
 //     detailsImage.setAttribute1("src", span.getAttribute1("href"));
